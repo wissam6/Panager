@@ -145,8 +145,6 @@ app.get('/passwords', (req,res) => {
 });
 
 app.post('/passwords', (req,res) => { 
-  sessionData = req.session;
-  sessionData.user = {};
   password.create({
     websiteName: req.body.website_name,
     emailOrUsername: req.body.emailOrUsername,
