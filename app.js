@@ -25,6 +25,10 @@ app.use((req, res, next) => {
 //create connection
 const db = require('./models');
 
+//routers
+const router = require('./routes/passwordRoute.js');
+app.use('/api/passwords', router);
+
 //association
 //user
 db.user.hasMany(db.password);
@@ -144,13 +148,14 @@ app.get('/passwords', (req,res) => {
   res.render('passwords');
 });
 
-app.post('/passwords', (req,res) => { 
-  password.create({
+app.post('/passwords', (req,res) => {
+  //app.use('/addPassword', router);
+  /*password.create({
     websiteName: req.body.website_name,
     emailOrUsername: req.body.emailOrUsername,
     password:req.body.password,
     userId: sessionData.user.id
-  });
+  });*/
 });
 
 
