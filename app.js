@@ -146,12 +146,16 @@ app.get('/logout', (req,res)=> {
 });
 
 app.get('/passwords', (req,res) => {
-  let passwords1 = Password.findOne({
+  let passwords1 = Password.findAll({
     where: {
       userId: sessionData.user.id
     }
+  }).then(pass => {
+    return pass[0].websiteName;
   });
-  res.render('passwords', {passwords1});
+
+
+  res.render('passwords', {passwords1} );
 });
 
 app.post('api/passwords/addPassword', (req,res) => {
