@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 
 //create connection
 const db = require('./models');
+const Password = db.password;
 
 //routers
 const router = require('./routes/passwordRoute.js');
@@ -145,7 +146,12 @@ app.get('/logout', (req,res)=> {
 });
 
 app.get('/passwords', (req,res) => {
-  res.render('passwords');
+  let passwords1 = Password.findOne({
+    where: {
+      userId: sessionData.user.id
+    }
+  });
+  res.render('passwords', {passwords1});
 });
 
 app.post('api/passwords/addPassword', (req,res) => {
