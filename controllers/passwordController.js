@@ -9,15 +9,10 @@ const Password = db.password;
 
 const addPassword = (req,res) => {
     let info = {
-        websiteName: 'kfc',
-        emailOrUsername: 'wissam_6',
-        password: '123',
-        userId: 1
-
-        //websiteName: req.body.website_name,
-        //emailOrUsername: req.body.emailOrUsername,
-        //password:req.body.password,
-        //userId: sessionData.user.id
+        websiteName: req.body.website_name,
+        emailOrUsername: req.body.emailOrUsername,
+        password:req.body.password,
+        userId: sessionData.user.id
     };
 
     const password = Password.create(info);

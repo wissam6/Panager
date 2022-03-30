@@ -148,14 +148,9 @@ app.get('/passwords', (req,res) => {
   res.render('passwords');
 });
 
-app.post('/passwords', (req,res) => {
-  //app.use('/addPassword', router);
-  /*password.create({
-    websiteName: req.body.website_name,
-    emailOrUsername: req.body.emailOrUsername,
-    password:req.body.password,
-    userId: sessionData.user.id
-  });*/
+app.post('api/passwords/addPassword', (req,res) => {
+  res.send(req.body);
+  //res.render('passwords');
 });
 
 
